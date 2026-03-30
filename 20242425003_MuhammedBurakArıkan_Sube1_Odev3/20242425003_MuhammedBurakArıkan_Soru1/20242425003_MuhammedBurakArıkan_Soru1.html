@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let urunSayisi = Number(prompt("Kaç farklı ürün gireceksiniz?"));
+      let sepetToplam = 0;
+
+      for (let i = 1; i <= urunSayisi; i++) {
+        let urunAdi = prompt(i + ". ürünün adını giriniz:");
+
+        let fiyat = Number(prompt(urunAdi + " fiyatını giriniz:"));
+        let adet = Number(prompt(urunAdi + " adetini giriniz:"));
+
+        if (fiyat < 0 || isNaN(fiyat)) {
+          alert("Fiyat 0'dan küçük olamaz!");
+          i--;
+          continue;
+        }
+
+        if (adet < 1 || isNaN(adet)) {
+          alert("Adet 1'den küçük olamaz!");
+          i--;
+          continue;
+        }
+
+        let urunToplam = fiyat * adet;
+        sepetToplam += urunToplam;
+
+        document.write(
+          "Fiyatı " +
+            fiyat +
+            " TL olan " +
+            urunAdi +
+            "'dan " +
+            adet +
+            " adet alındı.<br>"
+        );
+        document.write("Toplam bedel: " + urunToplam + " TL<br><br>");
+      }
+
+      let indirimOrani = 0;
+
+      if (sepetToplam >= 1000) {
+        indirimOrani = 0.1;
+      } else if (sepetToplam >= 500) {
+        indirimOrani = 0.05;
+      }
+
+      let indirimliToplam = sepetToplam - sepetToplam * indirimOrani;
+
+      document.write("<hr>");
+      document.write("Sepet toplamı: " + sepetToplam + " TL<br>");
+      document.write("İndirimli toplam: " + indirimliToplam + " TL");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="tr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Netflix Clone</title>
+
+    <style>
+      body {
+        margin: 0;
+        background: #141414;
+        font-family: Arial;
+        color: white;
+      }
+
+      h2 {
+        margin-left: 20px;
+      }
+
+      .row {
+        margin-bottom: 30px;
+      }
+
+      .row-container {
+        display: flex;
+        overflow-x: auto;
+        padding: 10px 20px;
+        gap: 10px;
+      }
+
+      .card {
+        min-width: 250px;
+        height: 140px;
+        border-radius: 10px;
+        background-size: cover;
+        background-position: center;
+        transition: transform 0.3s;
+        cursor: pointer;
+      }
+
+      .card:hover {
+        transform: scale(1.1);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app"></div>
+
+    <script>
+      let kategoriler = [
+        "Because you watched Gupi",
+        "Activating Hibernation Mode",
+        "30-Minute Laughs",
+        "Only on Netflix",
+        "Because you watched The Decameron",
+      ];
+
+      // ✅ DOĞRU YOL (file:///)
+      let filmler = [
+        "file:///C:/Users/aleyn/OneDrive/Masaüstü/20242425003_MuhammedBurakArıkan_Soru2/1.png",
+        "file:///C:/Users/aleyn/OneDrive/Masaüstü/20242425003_MuhammedBurakArıkan_Soru2/2.png",
+        "file:///C:/Users/aleyn/OneDrive/Masaüstü/20242425003_MuhammedBurakArıkan_Soru2/3.png",
+        "file:///C:/Users/aleyn/OneDrive/Masaüstü/20242425003_MuhammedBurakArıkan_Soru2/4.png",
+        "file:///C:/Users/aleyn/OneDrive/Masaüstü/20242425003_MuhammedBurakArıkan_Soru2/5.png",
+        "file:///C:/Users/aleyn/OneDrive/Masaüstü/20242425003_MuhammedBurakArıkan_Soru2/6.png",
+      ];
+
+      let app = document.getElementById("app");
+
+      for (let i = 0; i < kategoriler.length; i++) {
+        let row = document.createElement("div");
+        row.className = "row";
+
+        let baslik = document.createElement("h2");
+        baslik.innerText = kategoriler[i];
+
+        let container = document.createElement("div");
+        container.className = "row-container";
+
+        for (let j = 0; j < 6; j++) {
+          let card = document.createElement("div");
+          card.className = "card";
+
+          card.style.backgroundImage = `url(${filmler[j % filmler.length]})`;
+
+          container.appendChild(card);
+        }
+
+        row.appendChild(baslik);
+        row.appendChild(container);
+        app.appendChild(row);
+      }
+    </script>
+  </body>
+</html>
